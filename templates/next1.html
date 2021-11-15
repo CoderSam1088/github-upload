@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Inventory Game</h1>
+    <section class="centered">
+        <form action="/" method="POST">
+            <h2>{% for option in options %}
+              {{ option }} <br/>
+              {% endfor %}
+            </h2>
+            {% for val in range(vals) %}
+            <label>Item {{ val+1 }}: <input name="choice[{{ val }}]" required/></label><br/>
+            {% endfor %}
+            <section class="centered">
+                <button>Submit</button>
+                
+            </section>
+        </form>
+    </section>
+    <hr>
+    <p class="feedback">{% for error in errors %}
+      {{ error }} <br/>
+      {%endfor%}
+    </p>
+</body>
+</html>
